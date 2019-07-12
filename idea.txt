@@ -1,0 +1,28 @@
+record of winter conditions in scotland taken from mwis and sais
+season long records of;
+    freezing level
+    precip
+    temp @ 900m
+    avy risk/forecast
+    wind
+    cloud?
+    etc
+
+store as mwis areas, NW, WH, EH etc
+create new record daily 4/5pmish
+
+web page to display info
+
+class record(date, freezing_leve, precip etc)
+name records as date and areas, eg 27_01_2019_NW
+
+each area has list of records
+
+each day get relevant ata from mwis/sais
+create new record
+area_list.append(record)
+
+
+maybe later on conditions forecasting?
+eg if freexing level > xxx then y crags in? - but be careful of insulated turf
+freeze thaws then ice in?
