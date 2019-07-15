@@ -1,6 +1,5 @@
-# Strip HTML tags from a line
-
-# get freezing level line from mwis and print
+# Up to line 33, copy of strip_html_tags.py, 
+# Reads MWIS web page and prints out value of freezinf level and temperature
 
 from urllib.request import urlopen
 import re
@@ -33,3 +32,5 @@ temp_at_900 = temp_at_900.strip()
 
 print(freezing_level)
 print(temp_at_900)
+
+# Add to class starting from here
