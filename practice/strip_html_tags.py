@@ -25,22 +25,22 @@ def strip_tags(value):
 
 web_address = 'http://www.mwis.org.uk/scottish-forecast/WH/'
 
-line_with_tags = ''
+decoded_line = ''
 
 try:
     response = urlopen(web_address)
-    for line in response:
-        line = line.decode('utf-8')
-        if 'Freezing Level' in line:
-            freezing_level_raw = next(response)
-            line_with_tags = freezing_level_raw
 except FileNotFoundError:
     print("Address not found")
+
+for line in response:
+    line = line.decode('utf-8')  # encoding while file in utf8
+    if 'Freezing Level' in line:
+        freezing_level_raw = next(response)
+        decoded_line = freezing_level_raw.decode('utf-8')
+
 response.close()
 
-stripped_html_line = strip_tags(line_with_tags)
-remove_tabs_newlines_line = re.sub(r"[\n\t\s]*", "", stripped_html_line)
-
-print(line_with_tags)
+tag_re = re.compile(r'(<!--.*?-->|<[^>]*>)')
+stripped_html_line = tag_re.sub('', decoded_line)
+stripped_html_line = stripped_html_line.strip()
 print(stripped_html_line)
-print(remove_tabs_newlines_line)
