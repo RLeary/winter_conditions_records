@@ -21,6 +21,7 @@ each area has list of records
 each day get relevant ata from mwis/sais
 create new record
 area_list.append(record)
+save and read from file
 
 
 maybe later on conditions forecasting?
