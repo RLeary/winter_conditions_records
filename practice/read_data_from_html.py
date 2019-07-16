@@ -5,6 +5,7 @@
 # 
 
 from urllib.request import urlopen
+from statistics import mean
 import re
 
 # Get a list of all ints in a string
@@ -12,7 +13,8 @@ def get_ints_from_string(string):
     return [int(i) for i in re.findall(r'\d+|-\d+', string)]
 
 def get_average_int(ints):
-    return int(sum(ints)/len(ints))
+    #return int(sum(ints)/len(ints))
+    return int(mean(ints)) # use statistics standard lib mean()
 
 def strip_html_tags(line):
     html_tag_re = re.compile(r'(<!--.*?-->|<[^>]*>)')
@@ -49,22 +51,3 @@ def get_temp_and_freezing_level(mwis_page):
     temp_at_900 = get_average_int(temp_at_900_ints)
 
     return freezing_level, temp_at_900
-
-# Moving this into iterate_through_webpagespy
-""" 
-web_address = 'http://www.mwis.org.uk/scottish-forecast/WH/'
-temp_at_900 = get_temp_and_freezing_level(web_address)
-
-print(freezing_level)
-print(temp_at_900)
-
-area_id = web_address[-3:-1]
-print(area_id)
-
-freezing_level = '--10c or -12c'
-if freezing_level != 'Above the summits.':
-    freezing_level_ints = get_ints_from_string(freezing_level)
-    freezing_level_int = get_average_int(freezing_level_ints)
-    print(freezing_level_int)
-print(freezing_level)
-"""
