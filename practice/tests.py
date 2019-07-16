@@ -12,15 +12,23 @@ class HTMLReadTests(unittest.TestCase):
     def test_get_average_int(self):
         self.assertEqual(get_average_int([20, 30, 70]), 40)
         self.assertEqual(get_average_int([1, 5, 7]), 4)
-        # div 0, wrong type( eg av(1, 2, 3) - is not list)
-
+        # This does not need to check for div by 0, as statistics lib mean()
+        # will not work on empty list
+        #with self.assertRaises(ZeroDivisionError):
+        #   get_average_int([])
+        with self.assertRaises(TypeError):
+            get_average_int(20, 30, 40)
+        
     def test_strip_html_tags(self):
         html_line = '<div class="col-md-9"><p>Above the summits.</p></div>'
+        html_line2 = '<div class="col-md-9"><p>Above<i> the</i> summits.</p></div>'
         self.assertEqual(strip_html_tags(html_line), 'Above the summits.')
+        self.assertEqual(strip_html_tags(html_line2), 'Above the summits.')
 
-    def test_get_temp_and_freezinf_level(self):
+    def test_get_temp_and_freezing_level(self):
         # this needs to be online for urlopen to work
         # using live mwis - this test will need changing every day currently
+        # need to make mock urlopen()
         # test_page = 'TEST_forecast.html'
         test_page = 'http://www.mwis.org.uk/scottish-forecast/WH/'
         self.assertEqual(get_temp_and_freezing_level(test_page), ('Above the summits.', 10))
