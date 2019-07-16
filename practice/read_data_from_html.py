@@ -9,43 +9,51 @@ import re
 
 # Get a list of all ints in a string
 def get_ints_from_string(string):
-    # One line:
-    #return [int(i) for i in re.findall(r'\d+', string)]
-    string_list = re.findall(r'\d+', string)
-    int_list = [int(i) for i in string_list]
-    return int_list
+    return [int(i) for i in re.findall(r'\d+|-\d+', string)]
 
 def get_average_int(ints):
-    if len(ints) == 1:
-        return ints[0]
-    else:
-        return sum(ints)/len(ints)
+    return int(sum(ints)/len(ints))
 
+def strip_html_tags(line):
+    html_tag_re = re.compile(r'(<!--.*?-->|<[^>]*>)')
+    stripped_line = html_tag_re.sub('', line)
+    stripped_line = stripped_line.strip() # re.sub leaving whitespace at start and end
+    return stripped_line
+
+# return freezing level and temp lines from mwis
+# returns them as binary, needs converted to utf-8
+def get_temp_and_freezing_level(mwis_page):
+    try:
+        response = urlopen(mwis_page)
+    except FileNotFoundError:
+        print("Address not found")
+    
+    for line in response:
+        line = line.decode('utf-8')
+        if 'Freezing Level' in line:
+            freezing_level_raw = next(response)
+            freezing_level = freezing_level_raw.decode('utf-8')
+        if 'How Cold' in line:
+            temp_at_900_raw = next(response)
+            temp_at_900 = temp_at_900_raw.decode('utf-8')
+
+    response.close()
+
+    freezing_level = strip_html_tags(freezing_level)
+    temp_at_900 = strip_html_tags(temp_at_900)
+    
+    if freezing_level != 'Above the summits.':
+        freezing_level_ints = get_ints_from_string(freezing_level)
+        freezing_level = get_average_int(freezing_level_ints)
+    temp_at_900_ints = get_ints_from_string(temp_at_900)
+    temp_at_900 = get_average_int(temp_at_900_ints)
+
+    return freezing_level, temp_at_900
+
+# Moving this into iterate_through_webpagespy
+""" 
 web_address = 'http://www.mwis.org.uk/scottish-forecast/WH/'
-
-try:
-    response = urlopen(web_address)
-except FileNotFoundError:
-    print("Address not found")
-
-for line in response:
-    line = line.decode('utf-8')
-    if 'Freezing Level' in line:
-        freezing_level_raw = next(response)
-        decoded_line_freezing = freezing_level_raw.decode('utf-8')
-    if 'How Cold' in line:
-        temp_at_900_raw = next(response)
-        decoded_line_temp = temp_at_900_raw.decode('utf-8')
-
-response.close()
-
-tag_re = re.compile(r'(<!--.*?-->|<[^>]*>)')
-
-freezing_level = tag_re.sub('', decoded_line_freezing)
-freezing_level = freezing_level.strip()
-
-temp_at_900 = tag_re.sub('', decoded_line_temp)
-temp_at_900 = temp_at_900.strip()
+temp_at_900 = get_temp_and_freezing_level(web_address)
 
 print(freezing_level)
 print(temp_at_900)
@@ -53,9 +61,10 @@ print(temp_at_900)
 area_id = web_address[-3:-1]
 print(area_id)
 
-freezing_level = '10c or 34c'
+freezing_level = '--10c or -12c'
 if freezing_level != 'Above the summits.':
     freezing_level_ints = get_ints_from_string(freezing_level)
     freezing_level_int = get_average_int(freezing_level_ints)
     print(freezing_level_int)
 print(freezing_level)
+"""

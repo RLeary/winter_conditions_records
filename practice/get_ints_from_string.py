@@ -7,7 +7,7 @@ import re
 input_string = "10 rising to 12C inland, but staying near 9C around the coast"
 
 def get_ints_from_string(string):
-    return re.findall(r'\d+', string)
+    return re.findall(r'\d+|-\d+', string)
 
 ints = get_ints_from_string(input_string)
 print(ints)
