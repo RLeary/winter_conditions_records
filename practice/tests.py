@@ -1,5 +1,6 @@
 import unittest
 from read_data_from_html import *
+from iterate_through_webpages import *
 
 # HTML reading tests
 class HTMLReadTests(unittest.TestCase):
@@ -13,8 +14,9 @@ class HTMLReadTests(unittest.TestCase):
         self.assertEqual(get_average_int([1, 5, 7]), 4)
         # div 0, wrong type( eg av(1, 2, 3) - is not list)
 
-    def test_strip_html(self):
-        pass
+    def test_strip_html_tags(self):
+        html_line = '<div class="col-md-9"><p>Above the summits.</p></div>'
+        self.assertEqual(strip_html_tags(html_line), 'Above the summits.')
 
     def test_get_temp_and_freezinf_level(self):
         # this needs to be online for urlopen to work
@@ -22,7 +24,7 @@ class HTMLReadTests(unittest.TestCase):
         # test_page = 'TEST_forecast.html'
         test_page = 'http://www.mwis.org.uk/scottish-forecast/WH/'
         self.assertEqual(get_temp_and_freezing_level(test_page), ('Above the summits.', 10))
-        get_temp_and_freezing_level(test_page)
+        #self.assertEqual(get_temp_and_freezing_level(test_page)
 
 
 unittest.main()
