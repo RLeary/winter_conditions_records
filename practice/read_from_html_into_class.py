@@ -22,9 +22,9 @@ for line in response:
 
 response.close()
 
-tag_re = re.compile(r'(<!--.*?-->|<[^>]*>)')
+html_tag_re = re.compile(r'(<!--.*?-->|<[^>]*>)')
 
-freezing_level = tag_re.sub('', decoded_line_freezing)
+freezing_level = html_tag_re.sub('', decoded_line_freezing)
 freezing_level = freezing_level.strip()
 
 temp_at_900 = tag_re.sub('', decoded_line_temp)
