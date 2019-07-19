@@ -2,6 +2,18 @@ import unittest
 from read_data_from_html import *
 #from iterate_through_webpages import *
 
+# works for the Record class, use generic obj_eq func later
+def record_eq(record1, record2):
+    if record1.freezing_level != record2.freezing_level:
+        return False
+    if record1.temp_at_900 != record2.temp_at_900:
+        return False
+    if record1.date_today != record2.date_today:
+        return False
+    if record1.area_id != record2.area_id:
+        return False
+    return True
+
 # HTML reading tests
 class HTMLReadTests(unittest.TestCase):
     # Test the function to get a list of ints from a string
@@ -25,21 +37,18 @@ class HTMLReadTests(unittest.TestCase):
         self.assertEqual(strip_html_tags(html_line), 'Above the summits.')
         self.assertEqual(strip_html_tags(html_line2), 'Above the summits.')
 
-# get_temp_and_freezing_level() refactored into create_record, now returns
-# record
-    #def test_get_temp_and_freezing_level(self):
-        # this needs to be online for urlopen to work
-        # using live mwis - this test will need changing every day currently
-        # need to make mock urlopen()
-        #test_page = 'file://C:\Users\ruaridh.leary\Documents\winter_conditions_records\practice\TEST_forecast.html'
-        #test_page = 'http://www.mwis.org.uk/scottish-forecast/WH/'
-        #self.assertEqual(get_temp_and_freezing_level(test_page), ('Above the summits.', 10))
-        #self.assertEqual(get_temp_and_freezing_level(test_page), ('xxxx', x))
-
     def test_create_record(self):
         # this needs to be online for urlopen to work
         # using live mwis - this test will need changing every day currently
         # need to make mock urlopen()
-        pass
-
-unittest.main()
+        #test_page = 'file://C:\Users\ruaridh.leary\Documents\winter_conditions_records\practice\TEST_forecast.html'
+        test_page = 'http://www.mwis.org.uk/scottish-forecast/WH/'
+        test_record = Record('Above the summits.', 9, date.today(), 'WH')
+        self.assertIsInstance(create_record(test_page), Record)
+        # Need to change this, assertEqual uses ==, on objects two instances are only equal
+        # if they are the same object
+        #self.assertEqual(create_record(test_page), test_record)
+        self.assertTrue(record_eq(create_record(test_page), test_record))
+        
+if __name__ == '__main__':
+    unittest.main()
