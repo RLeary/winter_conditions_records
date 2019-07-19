@@ -2,7 +2,9 @@ import unittest
 from read_data_from_html import *
 #from iterate_through_webpages import *
 
-# works for the Record class, use generic obj_eq func later
+
+# used for checking Record object equality for test_create_record()
+# not needed any more, __eq__ implemented in record_class
 def record_eq(record1, record2):
     if record1.freezing_level != record2.freezing_level:
         return False
@@ -13,6 +15,7 @@ def record_eq(record1, record2):
     if record1.area_id != record2.area_id:
         return False
     return True
+
 
 # HTML reading tests
 class HTMLReadTests(unittest.TestCase):
@@ -47,7 +50,8 @@ class HTMLReadTests(unittest.TestCase):
         self.assertIsInstance(create_record(test_page), Record)
         # Need to change this, assertEqual uses ==, on objects two instances are only equal
         # if they are the same object
-        #self.assertEqual(create_record(test_page), test_record)
+        #   works now - need to implement __eq__ in class
+        self.assertEqual(create_record(test_page), test_record)
         self.assertTrue(record_eq(create_record(test_page), test_record))
         
 if __name__ == '__main__':

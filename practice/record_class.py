@@ -6,3 +6,11 @@ class Record:
         self.temp_at_900 = temp_at_900
         self.date_today = date_today
         self.area_id = area_id
+
+
+
+    def __eq__(self, other):
+        if self.__class__ != other.__class__:
+            return False
+        return self.__dict__ == other.__dict__
+
