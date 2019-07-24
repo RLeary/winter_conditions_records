@@ -26,13 +26,13 @@ def strip_html_tags(line):
 
 # Validate MWIS web address:
 # mwis_re = re.compile('http://www.mwis.org.uk/scottish-forecast/'[SU]|[WH]|[EH][SU][SH][NW]/')
-def validate_address(web_address):
+def validate_mwis_address(web_address):
     pass
 
 # return freezing level and temp lines from mwis
 # returns them as binary, needs converted to utf-8
 def create_record(mwis_page):
-    #validate_address(mwis_page)
+    #validate_mwis_address(mwis_page)
     try:
         response = urlopen(mwis_page)
     except FileNotFoundError:

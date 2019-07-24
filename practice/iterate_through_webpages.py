@@ -3,6 +3,7 @@
 
 from read_data_from_html import *
 from record_class import *
+import pickle
 
 
 # using lists for testing
@@ -39,3 +40,19 @@ print(sh_records)
 print(nw_records)
 print(su_records)
 print(nw_records[2].temp_at_900)
+
+# does not work for objects - write() is for strings
+#out_file = open('record-list_nw', 'w')
+#for line in nw_records:
+#    out_file.write(line)
+#out_file.close()
+
+out_file = open('record_list_nw.txt', 'wb')
+pickle.dump(nw_records, out_file)
+out_file.close()
+
+in_file = open('record_list_nw.txt', 'rb')
+nw_list = pickle.load(in_file)
+in_file.close()
+print(nw_list)
+print(nw_list[2].temp_at_900)

@@ -16,6 +16,11 @@ def record_eq(record1, record2):
         return False
     return True
 
+# create test record
+def create_test_record():
+#    record = Record()
+#    return record
+    pass
 
 # HTML reading tests
 class HTMLReadTests(unittest.TestCase):
@@ -46,7 +51,7 @@ class HTMLReadTests(unittest.TestCase):
         # need to make mock urlopen()
         #test_page = 'file://C:\Users\ruaridh.leary\Documents\winter_conditions_records\practice\TEST_forecast.html'
         test_page = 'http://www.mwis.org.uk/scottish-forecast/WH/'
-        test_record = Record('Above the summits.', 9, date.today(), 'WH')
+        test_record = Record('Above the summits.', 14, date.today(), 'WH')
         self.assertIsInstance(create_record(test_page), Record)
         # Need to change this, assertEqual uses ==, on objects two instances are only equal
         # if they are the same object

@@ -7,8 +7,10 @@ class Record:
         self.date_today = date_today
         self.area_id = area_id
 
-
-
+# Need to implement __eq__ to compare equality of objects, used
+# for unittests in tests.py
+# if the variables of an bject are other objects themselves __eq__ will need
+# to be defined in its class definition as well
     def __eq__(self, other):
         if self.__class__ != other.__class__:
             return False
