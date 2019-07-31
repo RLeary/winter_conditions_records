@@ -47,11 +47,11 @@ print(nw_records[2].temp_at_900)
 #    out_file.write(line)
 #out_file.close()
 
-out_file = open('record_list_nw.txt', 'wb')
+out_file = open('record_list_nw_file', 'wb')
 pickle.dump(nw_records, out_file)
 out_file.close()
 
-in_file = open('record_list_nw.txt', 'rb')
+in_file = open('record_list_nw_file', 'rb')
 nw_list = pickle.load(in_file)
 in_file.close()
 print(nw_list)

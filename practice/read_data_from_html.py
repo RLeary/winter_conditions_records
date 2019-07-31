@@ -30,7 +30,6 @@ def validate_mwis_address(web_address):
     pass
 
 # return freezing level and temp lines from mwis
-# returns them as binary, needs converted to utf-8
 def create_record(mwis_page):
     #validate_mwis_address(mwis_page)
     try:

@@ -17,10 +17,9 @@ def record_eq(record1, record2):
     return True
 
 # create test record
-def create_test_record():
-#    record = Record()
-#    return record
-    pass
+def create_test_record(freezing, temp, date_today, area):
+    record = Record(freezing, temp, date_today, area)
+    return record
 
 # HTML reading tests
 class HTMLReadTests(unittest.TestCase):
