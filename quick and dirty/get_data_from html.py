@@ -57,7 +57,6 @@ def create_csv_file(filename):
     output.writerow(csv_headers)
     ouput_csv.close()
 
-
 mwis_pages = ['http://www.mwis.org.uk/scottish-forecast/WH/', 
             'http://www.mwis.org.uk/scottish-forecast/EH/',
             'http://www.mwis.org.uk/scottish-forecast/SH/',
@@ -72,17 +71,14 @@ csv_files = ['quick and dirty/wh_records.csv',
             'quick and dirty/nw_records.csv'
             ]
 
-
 for i in range(len(csv_files)):
     if not os.path.exists(csv_files[i]):
         create_csv_file(csv_files[i])
-        #open(csv_files[i], 'w').close()
-
 
 for x in range(len(mwis_pages)):
-    test_record = get_record(mwis_pages[x])
+    record = get_record(mwis_pages[x])
     csv_writer_file = open(csv_files[x], 'a', newline='')
     csv_writer = csv.writer(csv_writer_file)
-    csv_writer.writerow(test_record)
+    csv_writer.writerow(record)
     csv_writer_file.close()
-    print(test_record)
+    print(record)
