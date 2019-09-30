@@ -40,8 +40,11 @@ def get_record(mwis_page):
     freezing_level = strip_html_tags(freezing_level)
     temp_at_900 = strip_html_tags(temp_at_900)
     
-    if freezing_level != 'Above the summits.':
-        freezing_level_ints = get_ints_from_string(freezing_level)
+    #if freezing_level != 'Above the summits.':
+    #    freezing_level_ints = get_ints_from_string(freezing_level)
+    #    freezing_level = get_average_int(freezing_level_ints)
+    freezing_level_ints = get_ints_from_string(freezing_level)
+    if freezing_level_ints:
         freezing_level = get_average_int(freezing_level_ints)
     temp_at_900_ints = get_ints_from_string(temp_at_900)
     temp_at_900 = get_average_int(temp_at_900_ints)
