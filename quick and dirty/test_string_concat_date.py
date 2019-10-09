@@ -25,5 +25,7 @@ area_id = 'WH'
 # Build string - this probably works - could maybe have a problem with 1st 9 
 # days of month/1st months of year - eg 02 becomes 2
 # Using f_string
+# This is the current days date - need next 2 days
+# add 1 and 2 to day, check if month needs to rollover?
 web_address = f'http://www.mwis.org.uk/scottish-forecast.asp?fa={area_id}&d={current_date.year}-{current_date.month}-{current_date.day}'
 print(web_address)
