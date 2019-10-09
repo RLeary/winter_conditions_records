@@ -10,6 +10,12 @@ import os
 def get_ints_from_string(string):
     return [int(i) for i in re.findall(r'\d+|-\d+', string)]
 
+# get_ints_from_string() returns negatives, was reading freezing level string 
+# '1200-1300m, slowly litfing' returns [1200, -1300]
+# Not matching '-' solves this for now
+def get_ints_from_string_non_neg(string):
+    return [int(i) for i in re.findall(r'\d+', string)]
+
 # I only want the average temp for a given day
 def get_average_int(ints):
     return int(mean(ints))
@@ -40,10 +46,7 @@ def get_record(mwis_page):
     freezing_level = strip_html_tags(freezing_level)
     temp_at_900 = strip_html_tags(temp_at_900)
     
-    #if freezing_level != 'Above the summits.':
-    #    freezing_level_ints = get_ints_from_string(freezing_level)
-    #    freezing_level = get_average_int(freezing_level_ints)
-    freezing_level_ints = get_ints_from_string(freezing_level)
+    freezing_level_ints = get_ints_from_string_non_neg(freezing_level)
     if freezing_level_ints:
         freezing_level = get_average_int(freezing_level_ints)
     temp_at_900_ints = get_ints_from_string(temp_at_900)
@@ -85,3 +88,7 @@ for x in range(len(mwis_pages)):
     csv_writer.writerow(record)
     csv_writer_file.close()
     print(record)
+
+# If day is friday, run for sat and sun as well
+# if date_today.weekday() == 4:
+#    run for sat and sun
