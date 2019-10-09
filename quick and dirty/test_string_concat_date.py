@@ -20,9 +20,10 @@ print("Current Day = ", current_date.day)
 if current_date.weekday() == 2:
     print("Wed")
 
+area_id = 'WH'
 
 # Build string - this probably works - could maybe have a problem with 1st 9 
 # days of month/1st months of year - eg 02 becomes 2
 # Using f_string
-web_address = f'http://www.mwis.org.uk/scottish-forecast.asp?fa=WH&d={current_date.year}-{current_date.month}-{current_date.day}'
+web_address = f'http://www.mwis.org.uk/scottish-forecast.asp?fa={area_id}&d={current_date.year}-{current_date.month}-{current_date.day}'
 print(web_address)
