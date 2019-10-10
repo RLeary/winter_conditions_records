@@ -6,7 +6,7 @@
 # http://www.mwis.org.uk/scottish-forecast.asp?fa=WH&d=2019-10-02
 
 
-from datetime import date
+from datetime import date, timedelta
 
 # datetime.date values
 
@@ -20,12 +20,48 @@ print("Current Day = ", current_date.day)
 if current_date.weekday() == 2:
     print("Wed")
 
-area_id = 'WH'
+#tomorrow date
+tomorrow_date = current_date + timedelta(days=1)
+
+# day after tomorrow date
+next_again_day = current_date + timedelta(days=2)
+
+area_ids = ['WH,',
+            'EH',
+            'SH',
+            'SU',
+            'NW'
+            ]
+
+pages = []
+next_day_pages = []
+next_again_day_pages = []
 
 # Build string - this probably works - could maybe have a problem with 1st 9 
 # days of month/1st months of year - eg 02 becomes 2
 # Using f_string
 # This is the current days date - need next 2 days
-# add 1 and 2 to day, check if month needs to rollover?
-web_address = f'http://www.mwis.org.uk/scottish-forecast.asp?fa={area_id}&d={current_date.year}-{current_date.month}-{current_date.day}'
-print(web_address)
+for i in range(len(area_ids)):
+    web_address = f'http://www.mwis.org.uk/scottish-forecast.asp?fa={area_ids[i]}&d={current_date.year}-{current_date.month}-{current_date.day}'
+    pages.append(web_address)
+#print(pages)
+
+for i in range(len(area_ids)):
+    web_address = f'http://www.mwis.org.uk/scottish-forecast.asp?fa={area_ids[i]}&d={tomorrow_date.year}-{tomorrow_date.month}-{tomorrow_date.day}'
+    next_day_pages.append(web_address)
+#print(next_day_pages)
+
+for i in range(len(area_ids)):
+    web_address = f'http://www.mwis.org.uk/scottish-forecast.asp?fa={area_ids[i]}&d={next_again_day.year}-{next_again_day.month}-{next_again_day.day}'
+    next_again_day_pages.append(web_address)
+#print(next_again_day_pages)
+
+def build_web_addresses(date):
+    addresses = []
+    area_ids = ['WH,', 'EH', 'SH', 'SU', 'NW']
+    for i in range(len(area_ids)):
+        address = f'http://www.mwis.org.uk/scottish-forecast.asp?fa={area_ids[i]}&d={date.year}-{date.month}-{date.day}'
+        addresses.append(address)
+    return addresses
+
+#print(build_web_addresses(date.today()))

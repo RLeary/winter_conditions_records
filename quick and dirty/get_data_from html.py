@@ -1,6 +1,6 @@
 from urllib.request import urlopen
 from statistics import mean
-from datetime import date
+from datetime import date, timedelta
 import re
 import csv
 import os
@@ -63,6 +63,15 @@ def create_csv_file(filename):
     output.writerow(csv_headers)
     ouput_csv.close()
 
+# For getting list of addresses for weekends
+def build_mwis_weekend_pages(date):
+    pages = []
+    area_ids = ['WH', 'EH', 'SH', 'SU', 'NW']
+    for i in range(len(area_ids)):
+        address = f'http://www.mwis.org.uk/scottish-forecast.asp?fa={area_ids[i]}&d={date.year}-{date.month}-{date.day}'
+        pages.append(address)
+    return pages
+
 mwis_pages = ['http://www.mwis.org.uk/scottish-forecast/WH/', 
             'http://www.mwis.org.uk/scottish-forecast/EH/',
             'http://www.mwis.org.uk/scottish-forecast/SH/',
@@ -90,5 +99,29 @@ for x in range(len(mwis_pages)):
     print(record)
 
 # If day is friday, run for sat and sun as well
-# if date_today.weekday() == 4:
-#    run for sat and sun
+date_today = date.today()
+sat_date = date_today + timedelta(days=1)
+sun_date = date_today + timedelta(days=2)
+
+if date_today.weekday() == 4:
+    sat_mwis_pages = build_mwis_weekend_pages(sat_date)
+    sun_mwis_pages = build_mwis_weekend_pages(sun_date)
+
+    for i in range(len(mwis_pages)):
+        sat_record = get_record(sat_mwis_pages[i])
+        sun_record = get_record(sun_mwis_pages[i])
+        # modify sat and sun records - get_record returns date.today()
+        # and the last chars of the web address as the area id
+        sat_record[2] = sat_date
+        sun_record[2] = sun_date
+        area_ids = ['WH,', 'EH', 'SH', 'SU', 'NW']
+        sat_record[3] = area_ids[i]
+        sun_record[3] = area_ids[i]
+
+        csv_writer_file = open(csv_files[i], 'a', newline='')
+        csv_writer = csv.writer(csv_writer_file)
+        csv_writer.writerow(sat_record)
+        csv_writer.writerow(sun_record)
+        csv_writer_file.close()
+
+        print(sun_record)
