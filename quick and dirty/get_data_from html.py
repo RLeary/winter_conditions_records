@@ -114,7 +114,7 @@ if date_today.weekday() == 4:
         # and the last chars of the web address as the area id
         sat_record[2] = sat_date
         sun_record[2] = sun_date
-        area_ids = ['WH,', 'EH', 'SH', 'SU', 'NW']
+        area_ids = ['WH', 'EH', 'SH', 'SU', 'NW']
         sat_record[3] = area_ids[i]
         sun_record[3] = area_ids[i]
 
@@ -124,4 +124,5 @@ if date_today.weekday() == 4:
         csv_writer.writerow(sun_record)
         csv_writer_file.close()
 
+        print(sat_record)
         print(sun_record)
