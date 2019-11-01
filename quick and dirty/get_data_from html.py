@@ -67,8 +67,11 @@ def create_csv_file(filename):
 def build_mwis_weekend_pages(date):
     pages = []
     area_ids = ['WH', 'EH', 'SH', 'SU', 'NW']
+    # Ensure that there is always 2 digits for the month and day
+    month = f'{date:%m}'
+    day = f'{date:%d}'
     for i in range(len(area_ids)):
-        address = f'http://www.mwis.org.uk/scottish-forecast.asp?fa={area_ids[i]}&d={date.year}-{date.month}-{date.day}'
+        address = f'http://www.mwis.org.uk/scottish-forecast.asp?fa={area_ids[i]}&d={date.year}-{month}-{day}'
         pages.append(address)
     return pages
 
