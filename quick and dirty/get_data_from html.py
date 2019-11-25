@@ -80,7 +80,7 @@ mwis_pages = ['http://www.mwis.org.uk/scottish-forecast/WH/',
             'http://www.mwis.org.uk/scottish-forecast/SH/',
             'http://www.mwis.org.uk/scottish-forecast/SU/',
             'http://www.mwis.org.uk/scottish-forecast/NW/'
-            ]
+            ] 
 
 csv_files = ['quick and dirty/wh_records.csv',
             'quick and dirty/eh_records.csv',
