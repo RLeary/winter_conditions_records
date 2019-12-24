@@ -16,7 +16,7 @@ class Record:
         self.date = date
         self.area = area
 
-    # Allow comparison of objects by their variables, fror finding any 
+    # Allow comparison of objects by their variables, for finding any 
     # duplicates in lists
     def __eq__(self, other):
         if self.__class__ != other.__class__:
