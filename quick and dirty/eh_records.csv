@@ -118,3 +118,25 @@ Temperature at 900m,Freezing Level,Date,Area
 1,1000,2019-12-22,EH,"Around 1C, small change in temperature with height."
 0,900,2019-12-23,EH,-1 to +1C.
 -1,800,2019-12-24,EH,-1C
+-1,700,2020-01-03,EH,-1 or -2C; rising marginally through day.
+0,1000,2020-01-04,EH,"-2 to +1C, likely rising gradually from west through day."
+3,Just above freezing on highest summits.,2020-01-05,EH,2 to 4C; small drop of temperature with greater height.
+-5,900,2020-01-06,EH,"2C, dropping through day to 0C or just below. Feeling closer to -18C in direct exposure to strongest winds."
+5,1200,2020-01-07,EH,"3 or 4C at first, soon rising to 6 to 8C."
+-2,650,2020-01-08,EH,-2C
+-2,550,2020-01-09,EH,-2C.
+-2,Frost in glens from dawn; staying at least part-frozen much of day.,2020-01-10,EH,"-2C; will begin to rise afternoon, above zero into night."
+1,833,2020-01-11,EH,"3 to 5C morning, then dropping toward 0C, or just below by dusk; then -3C overnight."
+-3,550,2020-01-12,EH,-3C.
+-10,575,2020-01-13,EH,"-4C lifting to around -1C, but feeling closer to -25C in direct exposure to strongest winds in afternoon."
+-13,450,2020-01-14,EH,"Around -4C, but feeling closer to -22C in direct exposure to strongest winds in morning."
+-2,550,2020-01-15,EH,-2 or -3C.
+0,800,2020-01-16,EH,"-1 or -2C, but tending to lift during afternoon to around 1C."
+-2,700,2020-01-17,EH,-2C.
+-2,550,2020-01-18,EH,-2C.
+1,750,2020-01-19,EH,-1C rising to 3C.
+-2,Above tops.,2020-01-20,EH,"3 to 6C, highest in the east, but feeling closer to -15C in direct exposure to strongest winds."
+5,Above the summits.,2020-01-21,EH,5C.
+6,Above the summits.,2020-01-22,EH,"5 to 7C, small variation of temperature with height."
+-3,350,2020-01-27,EH,-3 or -4C.
+-3,Terrain frozen with snow cover from most glens upward. Partial daytime thawing only lowest slopes.,2020-01-28,EH,-3C. Will rise marginally through the day.

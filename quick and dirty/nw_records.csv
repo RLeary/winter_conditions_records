@@ -117,3 +117,25 @@ Temperature at 900m,Freezing Level,Date,Area
 1,1000,2019-12-22,NW,"Around 1C, small change in temperature with height."
 0,900,2019-12-23,NW,-1 to +1C.
 -1,850,2019-12-24,NW,-1C
+-1,800,2020-01-03,NW,"-1 or -2C; rising marginally through day, locally just above 0C immediate coastal hills."
+0,1000,2020-01-04,NW,"-1 to +2C, likely rising gradually from west through day."
+3,Above freezing on highest summits.,2020-01-05,NW,2 to 4C; small drop of temperature with greater height.
+-5,900,2020-01-06,NW,"2C, dropping through day to 0C or just below. Feeling closer to -18C in direct exposure to strongest winds."
+5,1200,2020-01-07,NW,Soon rising to 6 to 8C. Abruptly 3C after dark.
+-2,600,2020-01-08,NW,-2 or -3C
+-2,675,2020-01-09,NW,"-2C, slightly higher Skye."
+-2,"Frost most inland glens from dawn, locally staying at least part-frozen into afternoon.",2020-01-10,NW,"-2C; will begin to rise afternoon, above zero into night."
+0,700,2020-01-11,NW,"3 to 5C at dawn, dropping through day to 0C, or by dusk nearer -1C; then -3C overnight."
+-3,550,2020-01-12,NW,-3C.
+-10,575,2020-01-13,NW,"-4C lifting to around -1C, but feeling closer to -25C in direct exposure to strongest winds in afternoon."
+-13,450,2020-01-14,NW,"Around -4C, but feeling closer to -22C in direct exposure to strongest winds."
+-2,700,2020-01-15,NW,-1 to -3C; lifting marginally through day.
+0,800,2020-01-16,NW,"-1 or -2C, but tending to lift during afternoon to around 1C."
+-1,700,2020-01-17,NW,-1C.
+-3,550,2020-01-18,NW,-3C.
+0,750,2020-01-19,NW,-1C rising to 2C.
+-4,Above tops.,2020-01-20,NW,"1 to 3C, but feeling closer to -18C in direct exposure to strongest winds."
+3,Above the summits.,2020-01-21,NW,Ranging from 5C on and near Skye to 2C north from about Torridon.
+5,Above the summits.,2020-01-22,NW,"5C, small variation of temperature with height."
+-3,350,2020-01-27,NW,-3 or -4C.
+-3,500,2020-01-28,NW,-3C. Will rise marginally through the day.
